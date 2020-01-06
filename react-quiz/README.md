@@ -1,2 +1,2 @@
-# Front-end em React
-Projeto Quiz, parte front-ende feita em react.
+# Projeto Quiz
+Esta pasta refere-se ao Frontend do projeto, utilizando React.

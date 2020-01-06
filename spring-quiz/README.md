@@ -1,2 +1,2 @@
 # Projeto Quiz
-Esta pasta refere-se ao Back-end do projeto, utilizando Spring.
+Esta pasta refere-se ao Backend do projeto, utilizando Spring.
