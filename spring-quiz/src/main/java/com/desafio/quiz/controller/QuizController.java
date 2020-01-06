@@ -1,5 +1,6 @@
 package com.desafio.quiz.controller;
 
+import com.desafio.quiz.dto.CompleteQuizDTO;
 import com.desafio.quiz.model.Quiz;
 import com.desafio.quiz.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,9 @@ public class QuizController {
         return quizService.deleteQuiz(quizId);
     }
 
+    @GetMapping("/{quizId}/complete")
+    @PreAuthorize("hasRole('USER')")
+    public CompleteQuizDTO getCompleteQuiz(@PathVariable Long quizId) {
+        return quizService.getCompleteQuiz(quizId);
+    }
 }

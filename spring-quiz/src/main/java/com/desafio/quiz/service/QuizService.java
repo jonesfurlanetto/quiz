@@ -1,5 +1,6 @@
 package com.desafio.quiz.service;
 
+import com.desafio.quiz.dto.CompleteQuizDTO;
 import com.desafio.quiz.model.Quiz;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,4 +11,5 @@ public interface QuizService {
     Quiz createQuiz(Quiz quiz);
     Quiz updateQuiz(Long quizId, Quiz quizRequest);
     ResponseEntity<?> deleteQuiz(Long quizId);
+    CompleteQuizDTO getCompleteQuiz(Long quizId);
 }

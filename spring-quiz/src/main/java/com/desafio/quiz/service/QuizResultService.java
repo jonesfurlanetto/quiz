@@ -1,5 +1,6 @@
 package com.desafio.quiz.service;
 
+import com.desafio.quiz.dto.AnswerQuizDTO;
 import com.desafio.quiz.model.QuizResult;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,4 +13,6 @@ public interface QuizResultService {
     ResponseEntity<?> deleteQuizResult(Long quizId, Long quizResultId);
     String getMostAnswerQuiz();
     Double getAvgQuiz(Long quizId);
+    ResponseEntity<?> answerQuiz(AnswerQuizDTO answerQuizDTO, String userName);
+
 }

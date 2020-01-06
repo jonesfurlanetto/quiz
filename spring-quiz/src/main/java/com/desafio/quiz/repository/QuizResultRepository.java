@@ -16,7 +16,7 @@ public interface QuizResultRepository extends JpaRepository<QuizResult, Long> {
 
     Page<QuizResult> findByQuizId(Long quizId, Pageable pageable);
     Optional<QuizResult> findByIdAndQuizId(Long id, Long quizId);
-
+    List<QuizResult> findByQuizId(Long quizId);
     @Query(value = "SELECT q.title FROM quizresults qr join quiz q on q.id = qr.quiz_id group by qr.quiz_id, q.title order by count(qr) desc limit 1", nativeQuery = true)
     String findMostAnswerQuiz();
     @Query(value = "SELECT avg(qr.correct_answeres) as media FROM quizresults qr where qr.quiz_id = :quizId group by qr.quiz_id order by avg(qr.correct_answeres) desc limit 1", nativeQuery = true)

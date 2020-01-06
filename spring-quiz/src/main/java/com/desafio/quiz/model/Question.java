@@ -3,7 +3,6 @@ package com.desafio.quiz.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "questions")
@@ -15,10 +14,6 @@ public class Question {
 
     @Column(nullable = false)
     private String description;
-
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "id")
-//    private List<Answer> answeres;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "quiz_id", nullable = false)

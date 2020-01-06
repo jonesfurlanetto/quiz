@@ -1,5 +1,6 @@
 package com.desafio.quiz.controller;
 
+import com.desafio.quiz.dto.AnswerQuizDTO;
 import com.desafio.quiz.model.QuizResult;
 import com.desafio.quiz.service.QuizResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 public class QuizResultController {
@@ -55,6 +57,12 @@ public class QuizResultController {
     @PreAuthorize("hasRole('USER')")
     public Double getAvgQuiz(@PathVariable (value = "quizId") Long quizId) {
         return quizResultService.getAvgQuiz(quizId);
+    }
+
+    @PostMapping("/quiz/answer")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> answerQuiz(@Valid @RequestBody AnswerQuizDTO answerQuizDTO, Principal principal) {
+        return quizResultService.answerQuiz(answerQuizDTO, principal.getName());
     }
 
 }

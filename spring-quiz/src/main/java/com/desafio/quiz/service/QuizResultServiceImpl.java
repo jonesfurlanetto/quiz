@@ -1,5 +1,7 @@
 package com.desafio.quiz.service;
 
+import com.desafio.quiz.dto.AnswerDTO;
+import com.desafio.quiz.dto.AnswerQuizDTO;
 import com.desafio.quiz.exception.ResourceNotFoundException;
 import com.desafio.quiz.model.QuizResult;
 import com.desafio.quiz.repository.QuizRepository;
@@ -61,5 +63,22 @@ public class QuizResultServiceImpl implements QuizResultService {
     @Override
     public Double getAvgQuiz(Long quizId) {
         return quizResultRepository.getAvgQuizResult(quizId);
+    }
+
+    @Override
+    public ResponseEntity<?> answerQuiz(AnswerQuizDTO answerQuizDTO, String userName) {
+        int countCorrectAnswer = 0;
+        QuizResult quizResult = new QuizResult();
+
+        for (AnswerDTO a: answerQuizDTO.getAnswersDTO()) {
+            if(a.isCorrectAnswer() && a.isMarkedAnswer()) {
+                countCorrectAnswer++;
+            }
+        }
+        quizResult.setCorrectAnsweres(countCorrectAnswer);
+        quizResult.setName(userName);
+        this.createQuizResult(answerQuizDTO.getQuizId(), quizResult);
+
+        return ResponseEntity.ok().build();
     }
 }
